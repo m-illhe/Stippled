@@ -1,0 +1,6 @@
+description = ""
+requires = "ast util"
+archive(byte) = "analyser.cma"
+archive(native) = "analyser.cmxa"
+plugin(byte) = "analyser.cma"
+plugin(native) = "analyser.cmxs"

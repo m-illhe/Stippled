@@ -1,0 +1,65 @@
+(lang dune 3.7)
+(name analyser)
+(sections (lib .) (libexec .))
+(files
+ (lib
+  (META
+   analyser.a
+   analyser.cma
+   analyser.cmi
+   analyser.cmt
+   analyser.cmti
+   analyser.cmx
+   analyser.cmxa
+   analyser.ml
+   analyser.mli
+   analyser__.cmi
+   analyser__.cmt
+   analyser__.cmx
+   analyser__.ml
+   analyser__Simplifier.cmi
+   analyser__Simplifier.cmt
+   analyser__Simplifier.cmx
+   analyser__Type_analyser.cmi
+   analyser__Type_analyser.cmt
+   analyser__Type_analyser.cmx
+   dune-package
+   opam
+   simplifier.ml
+   type_analyser.ml))
+ (libexec (analyser.cmxs)))
+(library
+ (name analyser)
+ (kind normal)
+ (archives (byte analyser.cma) (native analyser.cmxa))
+ (plugins (byte analyser.cma) (native analyser.cmxs))
+ (native_archives analyser.a)
+ (requires ast util)
+ (main_module_name Analyser)
+ (modes byte native)
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name analyser__)
+     (visibility public)
+     (kind alias)
+     (source (path Analyser__) (impl (path analyser__.ml-gen))))
+    (name Analyser)
+    (modules
+     (module
+      (obj_name analyser)
+      (visibility public)
+      (source
+       (path Analyser)
+       (intf (path analyser.mli))
+       (impl (path analyser.ml))))
+     (module
+      (obj_name analyser__Simplifier)
+      (visibility public)
+      (source (path Simplifier) (impl (path simplifier.ml))))
+     (module
+      (obj_name analyser__Type_analyser)
+      (visibility public)
+      (source (path Type_analyser) (impl (path type_analyser.ml))))))
+   (wrapped true))))

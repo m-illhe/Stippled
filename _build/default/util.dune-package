@@ -1,0 +1,75 @@
+(lang dune 3.7)
+(name util)
+(sections (lib .) (libexec .))
+(files
+ (lib
+  (META
+   dune-package
+   environment.ml
+   environment.mli
+   error_report.ml
+   error_report.mli
+   opam
+   position.ml
+   position.mli
+   util.a
+   util.cma
+   util.cmi
+   util.cmt
+   util.cmx
+   util.cmxa
+   util.ml
+   util__Environment.cmi
+   util__Environment.cmt
+   util__Environment.cmti
+   util__Environment.cmx
+   util__Error_report.cmi
+   util__Error_report.cmt
+   util__Error_report.cmti
+   util__Error_report.cmx
+   util__Position.cmi
+   util__Position.cmt
+   util__Position.cmti
+   util__Position.cmx))
+ (libexec (util.cmxs)))
+(library
+ (name util)
+ (kind normal)
+ (archives (byte util.cma) (native util.cmxa))
+ (plugins (byte util.cma) (native util.cmxs))
+ (native_archives util.a)
+ (requires menhirLib)
+ (main_module_name Util)
+ (modes byte native)
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name util)
+     (visibility public)
+     (kind alias)
+     (source (path Util) (impl (path util.ml-gen))))
+    (name Util)
+    (modules
+     (module
+      (obj_name util__Environment)
+      (visibility public)
+      (source
+       (path Environment)
+       (intf (path environment.mli))
+       (impl (path environment.ml))))
+     (module
+      (obj_name util__Error_report)
+      (visibility public)
+      (source
+       (path Error_report)
+       (intf (path error_report.mli))
+       (impl (path error_report.ml))))
+     (module
+      (obj_name util__Position)
+      (visibility public)
+      (source
+       (path Position)
+       (intf (path position.mli))
+       (impl (path position.ml))))))
+   (wrapped true))))

@@ -1,0 +1,17 @@
+lib: [
+  "_build/install/default/lib/ast/META"
+  "_build/install/default/lib/ast/ast.a"
+  "_build/install/default/lib/ast/ast.cma"
+  "_build/install/default/lib/ast/ast.cmi"
+  "_build/install/default/lib/ast/ast.cmt"
+  "_build/install/default/lib/ast/ast.cmti"
+  "_build/install/default/lib/ast/ast.cmx"
+  "_build/install/default/lib/ast/ast.cmxa"
+  "_build/install/default/lib/ast/ast.ml"
+  "_build/install/default/lib/ast/ast.mli"
+  "_build/install/default/lib/ast/dune-package"
+  "_build/install/default/lib/ast/opam"
+]
+libexec: [
+  "_build/install/default/lib/ast/ast.cmxs"
+]

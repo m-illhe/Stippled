@@ -1,0 +1,6 @@
+description = ""
+requires = "menhirLib"
+archive(byte) = "util.cma"
+archive(native) = "util.cmxa"
+plugin(byte) = "util.cma"
+plugin(native) = "util.cmxs"

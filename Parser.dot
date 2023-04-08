@@ -1,0 +1,11 @@
+digraph G {
+orientation = landscape;
+rankdir = LR;
+ratio = compress;
+s0 [ label="0", shape = record ] ;
+s1 [ label="{EOF|1}", shape = record ] ;
+s2 [ label="{main|2}", shape = record ] ;
+s0 -> s1 [ label="        ", style = solid ] ;
+s0 -> s2 [ label="        ", style = dashed ] ;
+
+}

@@ -1,0 +1,36 @@
+(lang dune 3.7)
+(name interpreter)
+(sections (lib .) (libexec .) (bin ../../bin))
+(files
+ (lib
+  (META
+   dune-package
+   interpreter.a
+   interpreter.cma
+   interpreter.cmi
+   interpreter.cmt
+   interpreter.cmti
+   interpreter.cmx
+   interpreter.cmxa
+   interpreter.ml
+   interpreter.mli
+   opam))
+ (libexec (interpreter.cmxs))
+ (bin (interpreter parser_visualiser)))
+(library
+ (name interpreter)
+ (kind normal)
+ (archives (byte interpreter.cma) (native interpreter.cmxa))
+ (plugins (byte interpreter.cma) (native interpreter.cmxs))
+ (native_archives interpreter.a)
+ (requires ast util graphics)
+ (main_module_name Interpreter)
+ (modes byte native)
+ (modules
+  (singleton
+   (obj_name interpreter)
+   (visibility public)
+   (source
+    (path Interpreter)
+    (intf (path interpreter.mli))
+    (impl (path interpreter.ml))))))

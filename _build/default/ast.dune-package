@@ -1,0 +1,32 @@
+(lang dune 3.7)
+(name ast)
+(sections (lib .) (libexec .))
+(files
+ (lib
+  (META
+   ast.a
+   ast.cma
+   ast.cmi
+   ast.cmt
+   ast.cmti
+   ast.cmx
+   ast.cmxa
+   ast.ml
+   ast.mli
+   dune-package
+   opam))
+ (libexec (ast.cmxs)))
+(library
+ (name ast)
+ (kind normal)
+ (archives (byte ast.cma) (native ast.cmxa))
+ (plugins (byte ast.cma) (native ast.cmxs))
+ (native_archives ast.a)
+ (requires util)
+ (main_module_name Ast)
+ (modes byte native)
+ (modules
+  (singleton
+   (obj_name ast)
+   (visibility public)
+   (source (path Ast) (intf (path ast.mli)) (impl (path ast.ml))))))
