@@ -1,6 +1,6 @@
-(lang dune 3.7)
+(lang dune 3.6)
 (name util)
-(sections (lib .) (libexec .))
+(sections (lib .) (libexec .) (doc ../../doc/util))
 (files
  (lib
   (META
@@ -31,7 +31,8 @@
    util__Position.cmt
    util__Position.cmti
    util__Position.cmx))
- (libexec (util.cmxs)))
+ (libexec (util.cmxs))
+ (doc (README.md)))
 (library
  (name util)
  (kind normal)
@@ -43,33 +44,27 @@
  (modes byte native)
  (modules
   (wrapped
-   (group
-    (alias
-     (obj_name util)
+   (main_module_name Util)
+   (modules
+    ((name Environment)
+     (obj_name util__Environment)
      (visibility public)
-     (kind alias)
-     (source (path Util) (impl (path util.ml-gen))))
+     (impl)
+     (intf))
+    ((name Error_report)
+     (obj_name util__Error_report)
+     (visibility public)
+     (impl)
+     (intf))
+    ((name Position)
+     (obj_name util__Position)
+     (visibility public)
+     (impl)
+     (intf)))
+   (alias_module
     (name Util)
-    (modules
-     (module
-      (obj_name util__Environment)
-      (visibility public)
-      (source
-       (path Environment)
-       (intf (path environment.mli))
-       (impl (path environment.ml))))
-     (module
-      (obj_name util__Error_report)
-      (visibility public)
-      (source
-       (path Error_report)
-       (intf (path error_report.mli))
-       (impl (path error_report.ml))))
-     (module
-      (obj_name util__Position)
-      (visibility public)
-      (source
-       (path Position)
-       (intf (path position.mli))
-       (impl (path position.ml))))))
+    (obj_name util)
+    (visibility public)
+    (kind alias)
+    (impl))
    (wrapped true))))

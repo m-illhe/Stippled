@@ -1,6 +1,6 @@
-(lang dune 3.7)
+(lang dune 3.6)
 (name interpreter)
-(sections (lib .) (libexec .) (bin ../../bin))
+(sections (lib .) (libexec .) (bin ../../bin) (doc ../../doc/interpreter))
 (files
  (lib
   (META
@@ -16,7 +16,8 @@
    interpreter.mli
    opam))
  (libexec (interpreter.cmxs))
- (bin (interpreter parser_visualiser)))
+ (bin (interpreter parser_visualiser))
+ (doc (README.md)))
 (library
  (name interpreter)
  (kind normal)
@@ -28,9 +29,8 @@
  (modes byte native)
  (modules
   (singleton
+   (name Interpreter)
    (obj_name interpreter)
    (visibility public)
-   (source
-    (path Interpreter)
-    (intf (path interpreter.mli))
-    (impl (path interpreter.ml))))))
+   (impl)
+   (intf))))

@@ -1,0 +1,24 @@
+lib: [
+  "_build/install/default/lib/interpreter/META"
+  "_build/install/default/lib/interpreter/dune-package"
+  "_build/install/default/lib/interpreter/interpreter.a"
+  "_build/install/default/lib/interpreter/interpreter.cma"
+  "_build/install/default/lib/interpreter/interpreter.cmi"
+  "_build/install/default/lib/interpreter/interpreter.cmt"
+  "_build/install/default/lib/interpreter/interpreter.cmti"
+  "_build/install/default/lib/interpreter/interpreter.cmx"
+  "_build/install/default/lib/interpreter/interpreter.cmxa"
+  "_build/install/default/lib/interpreter/interpreter.ml"
+  "_build/install/default/lib/interpreter/interpreter.mli"
+  "_build/install/default/lib/interpreter/opam"
+]
+libexec: [
+  "_build/install/default/lib/interpreter/interpreter.cmxs"
+]
+bin: [
+  "_build/install/default/bin/interpreter"
+  "_build/install/default/bin/parser_visualiser"
+]
+doc: [
+  "_build/install/default/doc/interpreter/README.md"
+]

@@ -1,6 +1,6 @@
-(lang dune 3.7)
+(lang dune 3.6)
 (name analyser)
-(sections (lib .) (libexec .))
+(sections (lib .) (libexec .) (doc ../../doc/analyser))
 (files
  (lib
   (META
@@ -27,7 +27,8 @@
    opam
    simplifier.ml
    type_analyser.ml))
- (libexec (analyser.cmxs)))
+ (libexec (analyser.cmxs))
+ (doc (README.md)))
 (library
  (name analyser)
  (kind normal)
@@ -39,27 +40,21 @@
  (modes byte native)
  (modules
   (wrapped
-   (group
-    (alias
-     (obj_name analyser__)
+   (main_module_name Analyser)
+   (modules
+    ((name Analyser) (obj_name analyser) (visibility public) (impl) (intf))
+    ((name Simplifier)
+     (obj_name analyser__Simplifier)
      (visibility public)
-     (kind alias)
-     (source (path Analyser__) (impl (path analyser__.ml-gen))))
-    (name Analyser)
-    (modules
-     (module
-      (obj_name analyser)
-      (visibility public)
-      (source
-       (path Analyser)
-       (intf (path analyser.mli))
-       (impl (path analyser.ml))))
-     (module
-      (obj_name analyser__Simplifier)
-      (visibility public)
-      (source (path Simplifier) (impl (path simplifier.ml))))
-     (module
-      (obj_name analyser__Type_analyser)
-      (visibility public)
-      (source (path Type_analyser) (impl (path type_analyser.ml))))))
+     (impl))
+    ((name Type_analyser)
+     (obj_name analyser__Type_analyser)
+     (visibility public)
+     (impl)))
+   (alias_module
+    (name Analyser__)
+    (obj_name analyser__)
+    (visibility public)
+    (kind alias)
+    (impl))
    (wrapped true))))

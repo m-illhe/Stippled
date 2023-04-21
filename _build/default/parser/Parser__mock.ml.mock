@@ -1,0 +1,106 @@
+
+type token = 
+  | Y_accessor
+  | X_accessor
+  | USUB
+  | TYPE_POS
+  | TYPE_POINT
+  | TYPE_LIST
+  | TYPE_INT
+  | TYPE_FLOAT
+  | TYPE_COLOR
+  | TYPE_BOOL
+  | TAIL
+  | SUB
+  | STRING of (
+# 12 "parser/Parser.mly"
+       (string)
+# 19 "parser/Parser__mock.ml.mock"
+)
+  | SIN
+  | SEMICOLON
+  | Red_accessor
+  | R_PAR
+  | R_CUR_BRK
+  | Position_accessor
+  | OR
+  | NOT
+  | NE
+  | MUL
+  | MOD
+  | L_PAR
+  | L_CUR_BRK
+  | LT
+  | LE
+  | INT of (
+# 10 "parser/Parser.mly"
+       (int)
+# 39 "parser/Parser__mock.ml.mock"
+)
+  | IF
+  | ID of (
+# 9 "parser/Parser.mly"
+       (string)
+# 45 "parser/Parser__mock.ml.mock"
+)
+  | HEAD
+  | Green_accessor
+  | GT
+  | GE
+  | FOREACH
+  | FOR
+  | FLOOR
+  | FLOAT_OF_INT
+  | FLOAT of (
+# 11 "parser/Parser.mly"
+       (float)
+# 58 "parser/Parser__mock.ml.mock"
+)
+  | EQ
+  | EOF
+  | ELSE
+  | DOT
+  | DIV
+  | Color_accessor
+  | COS
+  | COMMA
+  | Blue_accessor
+  | BOOL of (
+# 13 "parser/Parser.mly"
+       (bool)
+# 72 "parser/Parser__mock.ml.mock"
+)
+  | AND
+  | ADD
+
+# 1 "parser/Parser.mly"
+  
+    open Ast
+
+    (*Le parseur doit générer des Ast.program.
+    Pour les annotation, il vous suffit de créer l’annotation avec [Annotation.create $loc] qui sera ce qu’il vous faut dans tous les cas : $loc est un paramètre qui correspond aux positions délimitant la chaîne de caractères parsée par la règle où il est utilisé, ce qui est exactement ce qu’il faut mettre dans l’annotation.*)
+
+# 84 "parser/Parser__mock.ml.mock"
+
+let menhir_begin_marker =
+  0
+
+and xv_main =
+  let _ = fun (_eRR : exn) (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
+# 27 "parser/Parser.mly"
+ _1
+# 93 "parser/Parser__mock.ml.mock"
+   : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) ->
+    ((
+# 27 "parser/Parser.mly"
+      ( Program([],Block([],Annotation.create _loc)) )
+# 98 "parser/Parser__mock.ml.mock"
+     : 'tv_main) : (
+# 23 "parser/Parser.mly"
+       (program)
+# 102 "parser/Parser__mock.ml.mock"
+    )) in
+  ((let rec diverge() = diverge() in diverge()) : 'tv_main)
+
+and menhir_end_marker =
+  0

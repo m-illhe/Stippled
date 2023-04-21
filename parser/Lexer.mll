@@ -29,7 +29,7 @@ rule token = parse
     | "false"           { BOOL(false) }
     | "+"               { ADD }
     | "-"               { SUB }
-    | "*"               { MULul }
+    | "*"               { MUL }
     | "/"               { DIV }
     | "%"               { MOD }
     | "&&"              { AND }

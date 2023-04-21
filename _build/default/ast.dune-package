@@ -1,6 +1,6 @@
-(lang dune 3.7)
+(lang dune 3.6)
 (name ast)
-(sections (lib .) (libexec .))
+(sections (lib .) (libexec .) (doc ../../doc/ast))
 (files
  (lib
   (META
@@ -15,7 +15,8 @@
    ast.mli
    dune-package
    opam))
- (libexec (ast.cmxs)))
+ (libexec (ast.cmxs))
+ (doc (README.md)))
 (library
  (name ast)
  (kind normal)
@@ -26,7 +27,4 @@
  (main_module_name Ast)
  (modes byte native)
  (modules
-  (singleton
-   (obj_name ast)
-   (visibility public)
-   (source (path Ast) (intf (path ast.mli)) (impl (path ast.ml))))))
+  (singleton (name Ast) (obj_name ast) (visibility public) (impl) (intf))))

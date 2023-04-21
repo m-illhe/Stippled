@@ -31,3 +31,6 @@ lib: [
 libexec: [
   "_build/install/default/lib/util/util.cmxs"
 ]
+doc: [
+  "_build/install/default/doc/util/README.md"
+]

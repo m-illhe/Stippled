@@ -29,7 +29,7 @@ rule token = parse
     | "false"           { BOOL(false) }
     | "+"               { ADD }
     | "-"               { SUB }
-    | "*"               { MULul }
+    | "*"               { MUL }
     | "/"               { DIV }
     | "%"               { MOD }
     | "&&"              { AND }
@@ -55,3 +55,10 @@ rule token = parse
     | "}"               { R_CUR_BRK }
     | ","               { COMMA }
     | "."               { DOT }
+    | "Color_accessor"  { Color_accessor }
+    | "Position_accessor"  { Position_accessor }
+    | "X"               { X_accessor }
+    | "Y"               { Y_accessor }
+    | "Blue"            { Blue_accessor }
+    | "Red"             { Red_accessor }
+    | "Green"           { Green_accessor }

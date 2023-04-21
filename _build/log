@@ -1,9 +1,9 @@
-# dune build
+# dune build @doc
 # OCAMLPARAM: unset
 # Shared cache: disabled
-# Workspace root: /Users/martinillhe/Desktop/L3/Semestre2/Compilation/stippled
-# Auto-detected concurrency: 8
-$ /Users/martinillhe/.opam/default/bin/ocamlc.opt -config > /var/folders/1t/35_7g5ys1bq60nj47br3y5c40000gn/T/dune_8a2b12_output
+# Workspace root: /autofs/unitytravail/travail/malmousa/L3/compilation/Stippled
+# Auto-detected concurrency: 40
+$ /opt/local/opam/4.12.1/bin/ocamlc.opt -config > /tmp/cache-malmousa/dune_6ca71d_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -11,77 +11,75 @@ $ /Users/martinillhe/.opam/default/bin/ocamlc.opt -config > /var/folders/1t/35_7
 #  ; merlin = true
 #  ; for_host = None
 #  ; fdo_target_exe = None
-#  ; build_dir = In_build_dir "default"
-#  ; toplevel_path =
-#      Some External "/Users/martinillhe/.opam/default/lib/toplevel"
-#  ; ocaml_bin = External "/Users/martinillhe/.opam/default/bin"
-#  ; ocaml = Ok External "/Users/martinillhe/.opam/default/bin/ocaml"
-#  ; ocamlc = External "/Users/martinillhe/.opam/default/bin/ocamlc.opt"
-#  ; ocamlopt = Ok External "/Users/martinillhe/.opam/default/bin/ocamlopt.opt"
-#  ; ocamldep = Ok External "/Users/martinillhe/.opam/default/bin/ocamldep.opt"
-#  ; ocamlmklib =
-#      Ok External "/Users/martinillhe/.opam/default/bin/ocamlmklib.opt"
+#  ; build_dir = "default"
+#  ; toplevel_path = Some External "/opt/local/opam/4.12.1/lib/toplevel"
+#  ; ocaml_bin = External "/opt/local/opam/4.12.1/bin"
+#  ; ocaml = Ok External "/opt/local/opam/4.12.1/bin/ocaml"
+#  ; ocamlc = External "/opt/local/opam/4.12.1/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/opt/local/opam/4.12.1/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/opt/local/opam/4.12.1/bin/ocamldep.opt"
+#  ; ocamlmklib = Ok External "/opt/local/opam/4.12.1/bin/ocamlmklib.opt"
 #  ; env =
 #      map
-#        { "DUNE_OCAML_HARDCODED" : "/Users/martinillhe/.opam/default/lib"
-#        ; "DUNE_OCAML_STDLIB" : "/Users/martinillhe/.opam/default/lib/ocaml"
+#        { "DUNE_OCAML_HARDCODED" : "/opt/local/opam/4.12.1/lib"
+#        ; "DUNE_OCAML_STDLIB" : "/opt/local/opam/4.12.1/lib/ocaml"
 #        ; "DUNE_SOURCEROOT" :
-#            "/Users/martinillhe/Desktop/L3/Semestre2/Compilation/stippled"
+#            "/autofs/unitytravail/travail/malmousa/L3/compilation/Stippled"
 #        ; "INSIDE_DUNE" :
-#            "/Users/martinillhe/Desktop/L3/Semestre2/Compilation/stippled/_build/default"
+#            "/autofs/unitytravail/travail/malmousa/L3/compilation/Stippled/_build/default"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/martinillhe/Desktop/L3/Semestre2/Compilation/stippled/_build/install/default/lib"
+#            "/autofs/unitytravail/travail/malmousa/L3/compilation/Stippled/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/Users/martinillhe/Desktop/L3/Semestre2/Compilation/stippled/_build/install/default/lib"
+#            "/autofs/unitytravail/travail/malmousa/L3/compilation/Stippled/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/martinillhe/Desktop/L3/Semestre2/Compilation/stippled/_build/install/default/lib/toplevel"
+#            "/autofs/unitytravail/travail/malmousa/L3/compilation/Stippled/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
-#  ; findlib_paths = [ External "/Users/martinillhe/.opam/default/lib" ]
+#  ; findlib_paths = [ External "/opt/local/opam/4.12.1/lib" ]
 #  ; arch_sixtyfour = true
 #  ; natdynlink_supported = true
 #  ; supports_shared_libraries = true
 #  ; ocaml_config =
-#      { version = "4.14.1"
-#      ; standard_library_default =
-#          "/Users/martinillhe/.opam/default/lib/ocaml"
-#      ; standard_library = "/Users/martinillhe/.opam/default/lib/ocaml"
+#      { version = "4.12.1"
+#      ; standard_library_default = "/opt/local/opam/4.12.1/lib/ocaml"
+#      ; standard_library = "/opt/local/opam/4.12.1/lib/ocaml"
 #      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
 #      ; ccomp_type = "cc"
-#      ; c_compiler = "cc"
-#      ; ocamlc_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
-#      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
+#      ; c_compiler = "gcc"
+#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
 #      ; ocamlopt_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
-#      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
 #      ; bytecomp_c_compiler =
-#          [ "cc"
+#          [ "gcc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
-#          ; "-pthread"
+#          ; "-fPIC"
 #          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
 #          ]
-#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-ldl"; "-lpthread" ]
 #      ; native_c_compiler =
-#          [ "cc"
+#          [ "gcc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
-#          ; "-pthread"
+#          ; "-fPIC"
 #          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
 #          ]
-#      ; native_c_libraries = [ "-lm" ]
+#      ; native_c_libraries = [ "-lm"; "-ldl" ]
 #      ; native_pack_linker = [ "ld"; "-r"; "-o" ]
 #      ; cc_profile = []
-#      ; architecture = "arm64"
+#      ; architecture = "amd64"
 #      ; model = "default"
 #      ; int_size = 63
 #      ; word_size = 64
-#      ; system = "macosx"
-#      ; asm = [ "cc"; "-c"; "-Wno-trigraphs" ]
+#      ; system = "linux"
+#      ; asm = [ "as" ]
 #      ; asm_cfi_supported = true
 #      ; with_frame_pointers = false
 #      ; ext_exe = ""
@@ -92,99 +90,61 @@ $ /Users/martinillhe/.opam/default/bin/ocamlc.opt -config > /var/folders/1t/35_7
 #      ; os_type = "Unix"
 #      ; default_executable_name = "a.out"
 #      ; systhread_supported = true
-#      ; host = "aarch64-apple-darwin21.6.0"
-#      ; target = "aarch64-apple-darwin21.6.0"
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
 #      ; profiling = false
 #      ; flambda = false
 #      ; spacetime = false
 #      ; safe_string = true
-#      ; exec_magic_number = "Caml1999X031"
-#      ; cmi_magic_number = "Caml1999I031"
-#      ; cmo_magic_number = "Caml1999O031"
-#      ; cma_magic_number = "Caml1999A031"
-#      ; cmx_magic_number = "Caml1999Y031"
-#      ; cmxa_magic_number = "Caml1999Z031"
-#      ; ast_impl_magic_number = "Caml1999M031"
-#      ; ast_intf_magic_number = "Caml1999N031"
-#      ; cmxs_magic_number = "Caml1999D031"
-#      ; cmt_magic_number = "Caml1999T031"
+#      ; exec_magic_number = "Caml1999X029"
+#      ; cmi_magic_number = "Caml1999I029"
+#      ; cmo_magic_number = "Caml1999O029"
+#      ; cma_magic_number = "Caml1999A029"
+#      ; cmx_magic_number = "Caml1999Y029"
+#      ; cmxa_magic_number = "Caml1999Z029"
+#      ; ast_impl_magic_number = "Caml1999M029"
+#      ; ast_intf_magic_number = "Caml1999N029"
+#      ; cmxs_magic_number = "Caml1999D029"
+#      ; cmt_magic_number = "Caml1999T029"
 #      ; natdynlink_supported = true
 #      ; supports_shared_libraries = true
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/menhir --dump --table --inspection --explain --automaton-graph --cmly parser/Parser.mly --base parser/Parser --infer-write-query parser/Parser__mock.ml.mock)
-> File "parser/Parser.mly", line 151, characters 6-11:
-> Error: types is undefined.
-[1]
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamllex -q -o parser/Lexer.ml parser/Lexer.mll)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I analyser/.analyser.objs/byte -no-alias-deps -opaque -o analyser/.analyser.objs/byte/analyser__.cmo -c -impl analyser/analyser__.ml-gen)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I util/.util.objs/byte -no-alias-deps -opaque -o util/.util.objs/byte/util.cmo -c -impl util/util.ml-gen)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -impl analyser/type_analyser.ml) > _build/default/analyser/.analyser.objs/analyser__Type_analyser.impl.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -impl analyser/analyser.ml) > _build/default/analyser/.analyser.objs/analyser.impl.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -impl analyser/simplifier.ml) > _build/default/analyser/.analyser.objs/analyser__Simplifier.impl.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -intf util/environment.mli) > _build/default/util/.util.objs/util__Environment.intf.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -impl util/environment.ml) > _build/default/util/.util.objs/util__Environment.impl.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -intf util/error_report.mli) > _build/default/util/.util.objs/util__Error_report.intf.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -impl util/error_report.ml) > _build/default/util/.util.objs/util__Error_report.impl.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -intf util/position.mli) > _build/default/util/.util.objs/util__Position.intf.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -impl util/position.ml) > _build/default/util/.util.objs/util__Position.impl.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -intf analyser/analyser.mli) > _build/default/analyser/.analyser.objs/analyser.intf.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I util/.util.objs/byte -I /Users/martinillhe/.opam/default/lib/menhirLib -no-alias-deps -opaque -open Util -o util/.util.objs/byte/util__Environment.cmi -c -intf util/environment.mli)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I util/.util.objs/byte -I /Users/martinillhe/.opam/default/lib/menhirLib -no-alias-deps -opaque -open Util -o util/.util.objs/byte/util__Position.cmi -c -intf util/position.mli)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I util/.util.objs/byte -I /Users/martinillhe/.opam/default/lib/menhirLib -intf-suffix .ml -no-alias-deps -opaque -open Util -o util/.util.objs/byte/util__Environment.cmo -c -impl util/environment.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I parser/.language_parser.objs/byte -no-alias-deps -opaque -o parser/.language_parser.objs/byte/language_parser.cmo -c -impl parser/language_parser.ml-gen)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I util/.util.objs/byte -I /Users/martinillhe/.opam/default/lib/menhirLib -no-alias-deps -opaque -open Util -o util/.util.objs/byte/util__Error_report.cmi -c -intf util/error_report.mli)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I util/.util.objs/byte -I /Users/martinillhe/.opam/default/lib/menhirLib -intf-suffix .ml -no-alias-deps -opaque -open Util -o util/.util.objs/byte/util__Position.cmo -c -impl util/position.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -impl parser/Lexer.ml) > _build/default/parser/.language_parser.objs/language_parser__Lexer.impl.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I analyser/.analyser.objs/byte -I analyser/.analyser.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o analyser/.analyser.objs/native/analyser__.cmx -c -impl analyser/analyser__.ml-gen)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I util/.util.objs/byte -I util/.util.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o util/.util.objs/native/util.cmx -c -impl util/util.ml-gen)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I util/.util.objs/byte -I util/.util.objs/native -I /Users/martinillhe/.opam/default/lib/menhirLib -intf-suffix .ml -no-alias-deps -opaque -open Util -o util/.util.objs/native/util__Environment.cmx -c -impl util/environment.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I util/.util.objs/byte -I util/.util.objs/native -I /Users/martinillhe/.opam/default/lib/menhirLib -intf-suffix .ml -no-alias-deps -opaque -open Util -o util/.util.objs/native/util__Position.cmx -c -impl util/position.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I language/.ast.objs/byte -I /Users/martinillhe/.opam/default/lib/menhirLib -I util/.util.objs/byte -no-alias-deps -opaque -o language/.ast.objs/byte/ast.cmi -c -intf language/ast.mli)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I util/.util.objs/byte -I /Users/martinillhe/.opam/default/lib/menhirLib -intf-suffix .ml -no-alias-deps -opaque -open Util -o util/.util.objs/byte/util__Error_report.cmo -c -impl util/error_report.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -impl bin/main.ml) > _build/default/bin/.main.eobjs/dune__exe__Main.impl.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -impl bin/visualiser.ml) > _build/default/bin/.main.eobjs/dune__exe__Visualiser.impl.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I interpreter/.interpreter.objs/byte -I /Users/martinillhe/.opam/default/lib/graphics -I /Users/martinillhe/.opam/default/lib/menhirLib -I language/.ast.objs/byte -I util/.util.objs/byte -no-alias-deps -opaque -o interpreter/.interpreter.objs/byte/interpreter.cmi -c -intf interpreter/interpreter.mli)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I analyser/.analyser.objs/byte -I /Users/martinillhe/.opam/default/lib/menhirLib -I language/.ast.objs/byte -I util/.util.objs/byte -no-alias-deps -opaque -open Analyser__ -o analyser/.analyser.objs/byte/analyser__Simplifier.cmo -c -impl analyser/simplifier.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I analyser/.analyser.objs/byte -I /Users/martinillhe/.opam/default/lib/menhirLib -I language/.ast.objs/byte -I util/.util.objs/byte -no-alias-deps -opaque -open Analyser__ -o analyser/.analyser.objs/byte/analyser.cmi -c -intf analyser/analyser.mli)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o util/util.cma util/.util.objs/byte/util.cmo util/.util.objs/byte/util__Position.cmo util/.util.objs/byte/util__Error_report.cmo util/.util.objs/byte/util__Environment.cmo)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I parser/.language_parser.objs/byte -I parser/.language_parser.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o parser/.language_parser.objs/native/language_parser.cmx -c -impl parser/language_parser.ml-gen)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I language/.ast.objs/byte -I /Users/martinillhe/.opam/default/lib/menhirLib -I util/.util.objs/byte -intf-suffix .ml -no-alias-deps -opaque -o language/.ast.objs/byte/ast.cmo -c -impl language/ast.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I analyser/.analyser.objs/byte -I /Users/martinillhe/.opam/default/lib/menhirLib -I language/.ast.objs/byte -I util/.util.objs/byte -no-alias-deps -opaque -open Analyser__ -o analyser/.analyser.objs/byte/analyser__Type_analyser.cmo -c -impl analyser/type_analyser.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I parser_visualiser/.parser_visualiser.objs/byte -no-alias-deps -opaque -o parser_visualiser/.parser_visualiser.objs/byte/parser_visualiser.cmo -c -impl parser_visualiser/parser_visualiser.ml-gen)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -impl parser_visualiser/Parsing.ml) > _build/default/parser_visualiser/.parser_visualiser.objs/parser_visualiser__Parsing.impl.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o language/ast.cma language/.ast.objs/byte/ast.cmo)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I util/.util.objs/byte -I util/.util.objs/native -I /Users/martinillhe/.opam/default/lib/menhirLib -intf-suffix .ml -no-alias-deps -opaque -open Util -o util/.util.objs/native/util__Error_report.cmx -c -impl util/error_report.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I interpreter/.interpreter.objs/byte -I /Users/martinillhe/.opam/default/lib/graphics -I /Users/martinillhe/.opam/default/lib/menhirLib -I language/.ast.objs/byte -I util/.util.objs/byte -intf-suffix .ml -no-alias-deps -opaque -o interpreter/.interpreter.objs/byte/interpreter.cmo -c -impl interpreter/interpreter.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I language/.ast.objs/byte -I language/.ast.objs/native -I /Users/martinillhe/.opam/default/lib/menhirLib -I util/.util.objs/byte -I util/.util.objs/native -intf-suffix .ml -no-alias-deps -opaque -o language/.ast.objs/native/ast.cmx -c -impl language/ast.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I analyser/.analyser.objs/byte -I analyser/.analyser.objs/native -I /Users/martinillhe/.opam/default/lib/menhirLib -I language/.ast.objs/byte -I language/.ast.objs/native -I util/.util.objs/byte -I util/.util.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Analyser__ -o analyser/.analyser.objs/native/analyser__Simplifier.cmx -c -impl analyser/simplifier.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I analyser/.analyser.objs/byte -I /Users/martinillhe/.opam/default/lib/menhirLib -I language/.ast.objs/byte -I util/.util.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Analyser__ -o analyser/.analyser.objs/byte/analyser.cmo -c -impl analyser/analyser.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I analyser/.analyser.objs/byte -I analyser/.analyser.objs/native -I /Users/martinillhe/.opam/default/lib/menhirLib -I language/.ast.objs/byte -I language/.ast.objs/native -I util/.util.objs/byte -I util/.util.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Analyser__ -o analyser/.analyser.objs/native/analyser__Type_analyser.cmx -c -impl analyser/type_analyser.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o interpreter/interpreter.cma interpreter/.interpreter.objs/byte/interpreter.cmo)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I interpreter/.interpreter.objs/byte -I interpreter/.interpreter.objs/native -I /Users/martinillhe/.opam/default/lib/graphics -I /Users/martinillhe/.opam/default/lib/menhirLib -I language/.ast.objs/byte -I language/.ast.objs/native -I util/.util.objs/byte -I util/.util.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/.interpreter.objs/native/interpreter.cmx -c -impl interpreter/interpreter.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o util/util.cmxa util/.util.objs/native/util.cmx util/.util.objs/native/util__Position.cmx util/.util.objs/native/util__Error_report.cmx util/.util.objs/native/util__Environment.cmx)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I analyser/.analyser.objs/byte -I analyser/.analyser.objs/native -I /Users/martinillhe/.opam/default/lib/menhirLib -I language/.ast.objs/byte -I language/.ast.objs/native -I util/.util.objs/byte -I util/.util.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Analyser__ -o analyser/.analyser.objs/native/analyser.cmx -c -impl analyser/analyser.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o analyser/analyser.cma analyser/.analyser.objs/byte/analyser__.cmo analyser/.analyser.objs/byte/analyser__Type_analyser.cmo analyser/.analyser.objs/byte/analyser__Simplifier.cmo analyser/.analyser.objs/byte/analyser.cmo)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I parser_visualiser/.parser_visualiser.objs/byte -I parser_visualiser/.parser_visualiser.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o parser_visualiser/.parser_visualiser.objs/native/parser_visualiser.cmx -c -impl parser_visualiser/parser_visualiser.ml-gen)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -intf parser_visualiser/ParserLog.mli) > _build/default/parser_visualiser/.parser_visualiser.objs/parser_visualiser__ParserLog.intf.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -impl parser_visualiser/ParserLog.ml) > _build/default/parser_visualiser/.parser_visualiser.objs/parser_visualiser__ParserLog.impl.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamldep.opt -modules -intf parser_visualiser/Parsing.mli) > _build/default/parser_visualiser/.parser_visualiser.objs/parser_visualiser__Parsing.intf.d
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I bin/.main.eobjs/byte -no-alias-deps -opaque -o bin/.main.eobjs/byte/dune__exe.cmo -c -impl bin/.main.eobjs/dune__exe.ml-gen)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o language/ast.cmxa language/.ast.objs/native/ast.cmx)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o interpreter/interpreter.cmxa interpreter/.interpreter.objs/native/interpreter.cmx)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I parser_visualiser/.parser_visualiser.objs/byte -I /Users/martinillhe/.opam/default/lib/lambda-term -I /Users/martinillhe/.opam/default/lib/logs -I /Users/martinillhe/.opam/default/lib/lwt -I /Users/martinillhe/.opam/default/lib/lwt/unix -I /Users/martinillhe/.opam/default/lib/lwt_react -I /Users/martinillhe/.opam/default/lib/menhirLib -I /Users/martinillhe/.opam/default/lib/menhirSdk -I /Users/martinillhe/.opam/default/lib/mew -I /Users/martinillhe/.opam/default/lib/mew_vi -I /Users/martinillhe/.opam/default/lib/ocaml/threads -I /Users/martinillhe/.opam/default/lib/ocplib-endian -I /Users/martinillhe/.opam/default/lib/ocplib-endian/bigstring -I /Users/martinillhe/.opam/default/lib/react -I /Users/martinillhe/.opam/default/lib/result -I /Users/martinillhe/.opam/default/lib/trie -I /Users/martinillhe/.opam/default/lib/uchar -I /Users/martinillhe/.opam/default/lib/uucp -I /Users/martinillhe/.opam/default/lib/uuseg -I /Users/martinillhe/.opam/default/lib/uutf -I /Users/martinillhe/.opam/default/lib/zed -no-alias-deps -opaque -open Parser_visualiser -o parser_visualiser/.parser_visualiser.objs/byte/parser_visualiser__ParserLog.cmi -c -intf parser_visualiser/ParserLog.mli)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o analyser/analyser.cmxa analyser/.analyser.objs/native/analyser__.cmx analyser/.analyser.objs/native/analyser__Type_analyser.cmx analyser/.analyser.objs/native/analyser__Simplifier.cmx analyser/.analyser.objs/native/analyser.cmx)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I parser_visualiser/.parser_visualiser.objs/byte -I /Users/martinillhe/.opam/default/lib/lambda-term -I /Users/martinillhe/.opam/default/lib/logs -I /Users/martinillhe/.opam/default/lib/lwt -I /Users/martinillhe/.opam/default/lib/lwt/unix -I /Users/martinillhe/.opam/default/lib/lwt_react -I /Users/martinillhe/.opam/default/lib/menhirLib -I /Users/martinillhe/.opam/default/lib/menhirSdk -I /Users/martinillhe/.opam/default/lib/mew -I /Users/martinillhe/.opam/default/lib/mew_vi -I /Users/martinillhe/.opam/default/lib/ocaml/threads -I /Users/martinillhe/.opam/default/lib/ocplib-endian -I /Users/martinillhe/.opam/default/lib/ocplib-endian/bigstring -I /Users/martinillhe/.opam/default/lib/react -I /Users/martinillhe/.opam/default/lib/result -I /Users/martinillhe/.opam/default/lib/trie -I /Users/martinillhe/.opam/default/lib/uchar -I /Users/martinillhe/.opam/default/lib/uucp -I /Users/martinillhe/.opam/default/lib/uuseg -I /Users/martinillhe/.opam/default/lib/uutf -I /Users/martinillhe/.opam/default/lib/zed -no-alias-deps -opaque -open Parser_visualiser -o parser_visualiser/.parser_visualiser.objs/byte/parser_visualiser__Parsing.cmi -c -intf parser_visualiser/Parsing.mli)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe.cmx -c -impl bin/.main.eobjs/dune__exe.ml-gen)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I parser_visualiser/.parser_visualiser.objs/byte -I /Users/martinillhe/.opam/default/lib/lambda-term -I /Users/martinillhe/.opam/default/lib/logs -I /Users/martinillhe/.opam/default/lib/lwt -I /Users/martinillhe/.opam/default/lib/lwt/unix -I /Users/martinillhe/.opam/default/lib/lwt_react -I /Users/martinillhe/.opam/default/lib/menhirLib -I /Users/martinillhe/.opam/default/lib/menhirSdk -I /Users/martinillhe/.opam/default/lib/mew -I /Users/martinillhe/.opam/default/lib/mew_vi -I /Users/martinillhe/.opam/default/lib/ocaml/threads -I /Users/martinillhe/.opam/default/lib/ocplib-endian -I /Users/martinillhe/.opam/default/lib/ocplib-endian/bigstring -I /Users/martinillhe/.opam/default/lib/react -I /Users/martinillhe/.opam/default/lib/result -I /Users/martinillhe/.opam/default/lib/trie -I /Users/martinillhe/.opam/default/lib/uchar -I /Users/martinillhe/.opam/default/lib/uucp -I /Users/martinillhe/.opam/default/lib/uuseg -I /Users/martinillhe/.opam/default/lib/uutf -I /Users/martinillhe/.opam/default/lib/zed -intf-suffix .ml -no-alias-deps -opaque -open Parser_visualiser -o parser_visualiser/.parser_visualiser.objs/byte/parser_visualiser__ParserLog.cmo -c -impl parser_visualiser/ParserLog.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -shared -linkall -I util -o util/util.cmxs util/util.cmxa)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -shared -linkall -I interpreter -o interpreter/interpreter.cmxs interpreter/interpreter.cmxa)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -shared -linkall -I analyser -o analyser/analyser.cmxs analyser/analyser.cmxa)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -shared -linkall -I language -o language/ast.cmxs language/ast.cmxa)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I parser_visualiser/.parser_visualiser.objs/byte -I /Users/martinillhe/.opam/default/lib/lambda-term -I /Users/martinillhe/.opam/default/lib/logs -I /Users/martinillhe/.opam/default/lib/lwt -I /Users/martinillhe/.opam/default/lib/lwt/unix -I /Users/martinillhe/.opam/default/lib/lwt_react -I /Users/martinillhe/.opam/default/lib/menhirLib -I /Users/martinillhe/.opam/default/lib/menhirSdk -I /Users/martinillhe/.opam/default/lib/mew -I /Users/martinillhe/.opam/default/lib/mew_vi -I /Users/martinillhe/.opam/default/lib/ocaml/threads -I /Users/martinillhe/.opam/default/lib/ocplib-endian -I /Users/martinillhe/.opam/default/lib/ocplib-endian/bigstring -I /Users/martinillhe/.opam/default/lib/react -I /Users/martinillhe/.opam/default/lib/result -I /Users/martinillhe/.opam/default/lib/trie -I /Users/martinillhe/.opam/default/lib/uchar -I /Users/martinillhe/.opam/default/lib/uucp -I /Users/martinillhe/.opam/default/lib/uuseg -I /Users/martinillhe/.opam/default/lib/uutf -I /Users/martinillhe/.opam/default/lib/zed -intf-suffix .ml -no-alias-deps -opaque -open Parser_visualiser -o parser_visualiser/.parser_visualiser.objs/byte/parser_visualiser__Parsing.cmo -c -impl parser_visualiser/Parsing.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o parser_visualiser/parser_visualiser.cma parser_visualiser/.parser_visualiser.objs/byte/parser_visualiser.cmo parser_visualiser/.parser_visualiser.objs/byte/parser_visualiser__ParserLog.cmo parser_visualiser/.parser_visualiser.objs/byte/parser_visualiser__Parsing.cmo)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I parser_visualiser/.parser_visualiser.objs/byte -I parser_visualiser/.parser_visualiser.objs/native -I /Users/martinillhe/.opam/default/lib/lambda-term -I /Users/martinillhe/.opam/default/lib/logs -I /Users/martinillhe/.opam/default/lib/lwt -I /Users/martinillhe/.opam/default/lib/lwt/unix -I /Users/martinillhe/.opam/default/lib/lwt_react -I /Users/martinillhe/.opam/default/lib/menhirLib -I /Users/martinillhe/.opam/default/lib/menhirSdk -I /Users/martinillhe/.opam/default/lib/mew -I /Users/martinillhe/.opam/default/lib/mew_vi -I /Users/martinillhe/.opam/default/lib/ocaml/threads -I /Users/martinillhe/.opam/default/lib/ocplib-endian -I /Users/martinillhe/.opam/default/lib/ocplib-endian/bigstring -I /Users/martinillhe/.opam/default/lib/react -I /Users/martinillhe/.opam/default/lib/result -I /Users/martinillhe/.opam/default/lib/trie -I /Users/martinillhe/.opam/default/lib/uchar -I /Users/martinillhe/.opam/default/lib/uucp -I /Users/martinillhe/.opam/default/lib/uuseg -I /Users/martinillhe/.opam/default/lib/uutf -I /Users/martinillhe/.opam/default/lib/zed -intf-suffix .ml -no-alias-deps -opaque -open Parser_visualiser -o parser_visualiser/.parser_visualiser.objs/native/parser_visualiser__ParserLog.cmx -c -impl parser_visualiser/ParserLog.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I parser_visualiser/.parser_visualiser.objs/byte -I parser_visualiser/.parser_visualiser.objs/native -I /Users/martinillhe/.opam/default/lib/lambda-term -I /Users/martinillhe/.opam/default/lib/logs -I /Users/martinillhe/.opam/default/lib/lwt -I /Users/martinillhe/.opam/default/lib/lwt/unix -I /Users/martinillhe/.opam/default/lib/lwt_react -I /Users/martinillhe/.opam/default/lib/menhirLib -I /Users/martinillhe/.opam/default/lib/menhirSdk -I /Users/martinillhe/.opam/default/lib/mew -I /Users/martinillhe/.opam/default/lib/mew_vi -I /Users/martinillhe/.opam/default/lib/ocaml/threads -I /Users/martinillhe/.opam/default/lib/ocplib-endian -I /Users/martinillhe/.opam/default/lib/ocplib-endian/bigstring -I /Users/martinillhe/.opam/default/lib/react -I /Users/martinillhe/.opam/default/lib/result -I /Users/martinillhe/.opam/default/lib/trie -I /Users/martinillhe/.opam/default/lib/uchar -I /Users/martinillhe/.opam/default/lib/uucp -I /Users/martinillhe/.opam/default/lib/uuseg -I /Users/martinillhe/.opam/default/lib/uutf -I /Users/martinillhe/.opam/default/lib/zed -intf-suffix .ml -no-alias-deps -opaque -open Parser_visualiser -o parser_visualiser/.parser_visualiser.objs/native/parser_visualiser__Parsing.cmx -c -impl parser_visualiser/Parsing.ml)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o parser_visualiser/parser_visualiser.cmxa parser_visualiser/.parser_visualiser.objs/native/parser_visualiser.cmx parser_visualiser/.parser_visualiser.objs/native/parser_visualiser__ParserLog.cmx parser_visualiser/.parser_visualiser.objs/native/parser_visualiser__Parsing.cmx)
-$ (cd _build/default && /Users/martinillhe/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -shared -linkall -I parser_visualiser -o parser_visualiser/parser_visualiser.cmxs parser_visualiser/parser_visualiser.cmxa)
+$ (cd _build/default && /opt/local/opam/4.12.1/bin/odoc support-files -o _doc/_html)
+$ (cd _build/default/_doc/_odoc/pkg/analyser && /opt/local/opam/4.12.1/bin/odoc compile --pkg analyser -o page-index.odoc ../../../_mlds/analyser/index.mld)
+$ (cd _build/default/_doc/_odoc/pkg/ast && /opt/local/opam/4.12.1/bin/odoc compile --pkg ast -o page-index.odoc ../../../_mlds/ast/index.mld)
+$ (cd _build/default/_doc/_odoc/pkg/interpreter && /opt/local/opam/4.12.1/bin/odoc compile --pkg interpreter -o page-index.odoc ../../../_mlds/interpreter/index.mld)
+$ (cd _build/default/_doc/_odoc/pkg/util && /opt/local/opam/4.12.1/bin/odoc compile --pkg util -o page-index.odoc ../../../_mlds/util/index.mld)
+$ (cd _build/default/util/.util.objs/byte && /opt/local/opam/4.12.1/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/util --pkg util -o util.odoc util.cmt)
+$ (cd _build/default/util/.util.objs/byte && /opt/local/opam/4.12.1/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/util --pkg util -o util__Position.odoc util__Position.cmti)
+$ (cd _build/default/util/.util.objs/byte && /opt/local/opam/4.12.1/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/util --pkg util -o util__Environment.odoc util__Environment.cmti)
+$ (cd _build/default/util/.util.objs/byte && /opt/local/opam/4.12.1/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/util --pkg util -o util__Error_report.odoc util__Error_report.cmti)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc link -I ../_odoc/pkg/util -I ../../util/.util.objs/byte -o ../_odocls/util/page-index.odocl ../_odoc/pkg/util/page-index.odoc)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc link -I ../_odoc/pkg/util -I ../../util/.util.objs/byte -o ../_odocls/util/util.odocl ../../util/.util.objs/byte/util.odoc)
+> File "../../util/.util.objs/byte/util.odoc":
+> Warning: Couldn't find the following modules:
+>   Stdlib
+$ (cd _build/default/language/.ast.objs/byte && /opt/local/opam/4.12.1/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/ast -I ../../../util/.util.objs/byte --pkg ast -o ast.odoc ast.cmti)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc html-generate -o . ../_odocls/util/page-index.odocl)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc html-generate -o . ../_odocls/util/util.odocl)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc link -I ../_odoc/pkg/ast -I ../../language/.ast.objs/byte -I ../../util/.util.objs/byte -o ../_odocls/ast/page-index.odocl ../_odoc/pkg/ast/page-index.odoc)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc link -I ../_odoc/pkg/ast -I ../../language/.ast.objs/byte -I ../../util/.util.objs/byte -o ../_odocls/ast/ast.odocl ../../language/.ast.objs/byte/ast.odoc)
+> File "../../language/.ast.objs/byte/ast.odoc":
+> Warning: Couldn't find the following modules:
+>   Stdlib
+$ (cd _build/default/interpreter/.interpreter.objs/byte && /opt/local/opam/4.12.1/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/interpreter -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg interpreter -o interpreter.odoc interpreter.cmti)
+$ (cd _build/default/analyser/.analyser.objs/byte && /opt/local/opam/4.12.1/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/analyser -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg analyser -o analyser__.odoc analyser__.cmt)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc html-generate -o . ../_odocls/ast/page-index.odocl)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc link -I ../_odoc/pkg/interpreter -I ../../interpreter/.interpreter.objs/byte -I ../../language/.ast.objs/byte -I ../../util/.util.objs/byte -o ../_odocls/interpreter/page-index.odocl ../_odoc/pkg/interpreter/page-index.odoc)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc link -I ../_odoc/pkg/interpreter -I ../../interpreter/.interpreter.objs/byte -I ../../language/.ast.objs/byte -I ../../util/.util.objs/byte -o ../_odocls/interpreter/interpreter.odocl ../../interpreter/.interpreter.objs/byte/interpreter.odoc)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc html-generate -o . ../_odocls/ast/ast.odocl)
+$ (cd _build/default/analyser/.analyser.objs/byte && /opt/local/opam/4.12.1/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/analyser -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg analyser -o analyser__Simplifier.odoc analyser__Simplifier.cmt)
+$ (cd _build/default/analyser/.analyser.objs/byte && /opt/local/opam/4.12.1/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/analyser -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg analyser -o analyser.odoc analyser.cmti)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc html-generate -o . ../_odocls/interpreter/page-index.odocl)
+$ (cd _build/default/analyser/.analyser.objs/byte && /opt/local/opam/4.12.1/bin/odoc compile -I . -I ../../../_doc/_odoc/pkg/analyser -I ../../../language/.ast.objs/byte -I ../../../util/.util.objs/byte --pkg analyser -o analyser__Type_analyser.odoc analyser__Type_analyser.cmt)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc html-generate -o . ../_odocls/interpreter/interpreter.odocl)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc link -I ../_odoc/pkg/analyser -I ../../analyser/.analyser.objs/byte -I ../../language/.ast.objs/byte -I ../../util/.util.objs/byte -o ../_odocls/analyser/page-index.odocl ../_odoc/pkg/analyser/page-index.odoc)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc link -I ../_odoc/pkg/analyser -I ../../analyser/.analyser.objs/byte -I ../../language/.ast.objs/byte -I ../../util/.util.objs/byte -o ../_odocls/analyser/analyser.odocl ../../analyser/.analyser.objs/byte/analyser.odoc)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc html-generate -o . ../_odocls/analyser/page-index.odocl)
+$ (cd _build/default/_doc/_html && /opt/local/opam/4.12.1/bin/odoc html-generate -o . ../_odocls/analyser/analyser.odocl)

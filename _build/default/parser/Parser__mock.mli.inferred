@@ -1,0 +1,56 @@
+type token =
+    Y_accessor
+  | X_accessor
+  | USUB
+  | TYPE_POS
+  | TYPE_POINT
+  | TYPE_LIST
+  | TYPE_INT
+  | TYPE_FLOAT
+  | TYPE_COLOR
+  | TYPE_BOOL
+  | TAIL
+  | SUB
+  | STRING of string
+  | SIN
+  | SEMICOLON
+  | Red_accessor
+  | R_PAR
+  | R_CUR_BRK
+  | Position_accessor
+  | OR
+  | NOT
+  | NE
+  | MUL
+  | MOD
+  | L_PAR
+  | L_CUR_BRK
+  | LT
+  | LE
+  | INT of int
+  | IF
+  | ID of string
+  | HEAD
+  | Green_accessor
+  | GT
+  | GE
+  | FOREACH
+  | FOR
+  | FLOOR
+  | FLOAT_OF_INT
+  | FLOAT of float
+  | EQ
+  | EOF
+  | ELSE
+  | DOT
+  | DIV
+  | Color_accessor
+  | COS
+  | COMMA
+  | Blue_accessor
+  | BOOL of bool
+  | AND
+  | ADD
+val menhir_begin_marker : int
+val xv_main : Ast.program
+val menhir_end_marker : int
