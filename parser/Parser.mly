@@ -77,7 +77,7 @@
 %token EOF
 
 
-
+%nonassoc IF
 %nonassoc ELSE
 %left AND OR
 %left EQ NE LT GT LE GE
@@ -106,8 +106,8 @@ type_expr:
 
 
 expression_list:
-| expr = expression { [expr] }
-| expr = expression COMMA t = expression_list  { expr::t }
+| expr1 = expression_list COMMA expr2 = expression {expr1 @ [expr2] }
+| expr2 = expression  { expr2::[] }
 | { [] }
 
 expression:
@@ -127,7 +127,8 @@ expression:
 
 
 statement_list:
-| t = statement_list s = statement { s::t }
+| t = statement_list SEMICOLON s = statement { t@[s] }
+| s = statement {s::[]}
 | { [] }
 
 
@@ -159,18 +160,15 @@ statement:
 
 
 argument_list:
-| p = argument { [p] }
-| t = argument_list COMMA a = argument { a::t }
+| p = argument_list SEMICOLON t = argument { p@[t] }
+| t = argument {  t :: [] }
 | { [] }
 
 
 argument:
-| name = ID te = type_expr {Ast.Argument (name,te,Annotation.create $loc)} 
+| t = type_expr L_PAR name = ID R_PAR{Argument(name, t, Annotation.create $loc)}
+| TYPE_LIST L_PAR t = type_expr R_PAR L_PAR name = ID R_PAR {Argument(name, Type_list(t), Annotation.create $loc)}
 
-
-
-program:
-| al = argument_list s = statement {Ast.Program ((List.rev al),s)} 
 
 %inline binary_operator:
 | ADD   { Add }
