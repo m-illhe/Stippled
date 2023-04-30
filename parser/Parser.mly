@@ -21,6 +21,7 @@
 %token FLOAT_OF_INT
 %token COS
 %token SIN
+%token PI
 
 %token IN
 %token FLOOR
@@ -107,6 +108,7 @@ type_expr:
 expression:
 | i = INT {Constant_i (i,Annotation.create $loc) }
 | f = FLOAT {Constant_f (f,Annotation.create $loc) }
+| PI {Constant_f (Float.pi,Annotation.create $loc) }
 | b = BOOL {Constant_b (b,Annotation.create $loc) }
 | id = ID {Variable (id,Annotation.create $loc) }
 | TYPE_POS L_PAR exp1 = expression COMMA exp2 = expression R_PAR {Pos (exp1,exp2,Annotation.create $loc) }

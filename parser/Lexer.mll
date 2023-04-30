@@ -22,6 +22,7 @@ rule token = parse
     | "List"            { TYPE_LIST }
     | "True"            { BOOL(true) }
     | "False"           { BOOL(false) }
+    | "Pi"              { PI }
     | "Float_of_int"    { FLOAT_OF_INT }
     | "And"              { AND }
     | "Or"              { OR }

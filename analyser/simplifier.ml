@@ -139,6 +139,6 @@ let rec statement_simplifier statement =
   | Draw(point, anno) -> Draw(simplify_expression point, anno)
   | Print(expr, anno) -> Print(simplify_expression expr, anno)
   | a -> a
-let simplify program = 
+let simplifier program = 
   match program with
   |Program(arg_list, statement) -> Program(arg_list, statement_simplifier statement)
