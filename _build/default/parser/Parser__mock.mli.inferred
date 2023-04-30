@@ -1,7 +1,6 @@
 type token =
     Y_ACCESSOR
   | X_ACCESSOR
-  | USUB
   | TYPE_POS
   | TYPE_POINT
   | TYPE_LIST
@@ -12,7 +11,6 @@ type token =
   | TO
   | TAIL
   | SUB
-  | STRING of string
   | STEP
   | SIN
   | SEMICOLON
@@ -64,6 +62,7 @@ val xv_unary_operator : Ast.unary_operator
 val xv_type_expr : Ast.type_expr
 val xv_statement_list : Ast.statement list
 val xv_statement : Ast.statement
+val xv_not : Ast.unary_operator
 val xv_main : Ast.program
 val xv_field_accessor : Ast.field_accessor
 val xv_expression_list : Ast.expression list

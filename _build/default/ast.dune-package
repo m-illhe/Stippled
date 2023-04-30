@@ -1,6 +1,6 @@
 (lang dune 3.6)
 (name ast)
-(sections (lib .) (libexec .) (doc ../../doc/ast))
+(sections (lib .) (libexec .))
 (files
  (lib
   (META
@@ -15,8 +15,7 @@
    ast.mli
    dune-package
    opam))
- (libexec (ast.cmxs))
- (doc (README.md)))
+ (libexec (ast.cmxs)))
 (library
  (name ast)
  (kind normal)

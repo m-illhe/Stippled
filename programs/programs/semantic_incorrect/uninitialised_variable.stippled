@@ -1,5 +1,0 @@
-Begin
-    Int(x);
-    Int(y);
-    Copy(x,y)
-End

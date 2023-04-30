@@ -1,4 +1,0 @@
-Begin
-    Int(x);
-    Foreach y In 3 Copy(x,y)
-End

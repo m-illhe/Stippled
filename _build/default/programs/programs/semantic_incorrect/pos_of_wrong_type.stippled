@@ -1,4 +1,0 @@
-Begin
-    Pos(p);
-    Copy(p,Pos(Pos(2,3),3.5))
-End

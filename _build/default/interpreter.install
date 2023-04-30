@@ -19,6 +19,3 @@ bin: [
   "_build/install/default/bin/interpreter"
   "_build/install/default/bin/parser_visualiser"
 ]
-doc: [
-  "_build/install/default/doc/interpreter/README.md"
-]

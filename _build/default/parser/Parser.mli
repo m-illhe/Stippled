@@ -4,7 +4,6 @@
 type token = 
   | Y_ACCESSOR
   | X_ACCESSOR
-  | USUB
   | TYPE_POS
   | TYPE_POINT
   | TYPE_LIST
@@ -15,7 +14,6 @@ type token =
   | TO
   | TAIL
   | SUB
-  | STRING of (string)
   | STEP
   | SIN
   | SEMICOLON
@@ -84,7 +82,6 @@ module MenhirInterpreter : sig
     | T_error : unit terminal
     | T_Y_ACCESSOR : unit terminal
     | T_X_ACCESSOR : unit terminal
-    | T_USUB : unit terminal
     | T_TYPE_POS : unit terminal
     | T_TYPE_POINT : unit terminal
     | T_TYPE_LIST : unit terminal
@@ -95,7 +92,6 @@ module MenhirInterpreter : sig
     | T_TO : unit terminal
     | T_TAIL : unit terminal
     | T_SUB : unit terminal
-    | T_STRING : (string) terminal
     | T_STEP : unit terminal
     | T_SIN : unit terminal
     | T_SEMICOLON : unit terminal

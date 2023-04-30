@@ -1,4 +1,0 @@
-Begin
-    Int(x);
-    If(3) Copy(x,1) Else Copy(x,2)
-End

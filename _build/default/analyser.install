@@ -27,6 +27,3 @@ lib: [
 libexec: [
   "_build/install/default/lib/analyser/analyser.cmxs"
 ]
-doc: [
-  "_build/install/default/doc/analyser/README.md"
-]

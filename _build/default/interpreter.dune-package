@@ -1,6 +1,6 @@
 (lang dune 3.6)
 (name interpreter)
-(sections (lib .) (libexec .) (bin ../../bin) (doc ../../doc/interpreter))
+(sections (lib .) (libexec .) (bin ../../bin))
 (files
  (lib
   (META
@@ -16,8 +16,7 @@
    interpreter.mli
    opam))
  (libexec (interpreter.cmxs))
- (bin (interpreter parser_visualiser))
- (doc (README.md)))
+ (bin (interpreter parser_visualiser)))
 (library
  (name interpreter)
  (kind normal)

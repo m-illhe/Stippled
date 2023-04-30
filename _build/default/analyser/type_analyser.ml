@@ -14,7 +14,8 @@ open Ast
     Cette fonction doit également effectuer les rapports d’erreur et d’avertissement dans [report].
 
     Ces fonction font un pattern matching sur leur argument principal et traitent chaque cas séparément. Elles font uniquement des effet de bord.
-    Par exemple : type_expression : Ast.type_expr annotation -> Util.Error_report.t -> Ast.expression -> unit
+    Par exemple : type_expression : Ast.type_expr Util.Environment.t -> Util.Error_report.t -> Ast.expression -> Ast.type_expr
+    (cette fonction peut également ne rien renvoyer, auquel cas vous devrez avoir une fonction auxiliaire récupérant le type d’une expression déjà typée).
 
     Vous pouvez également effectuer ici (en même temps ou dans une fonction séparée) une analyse d’initialisation des variables (auquel cas, il faut ajouter un argument supplémentaire à ce qui est décrit ci-dessus).
 

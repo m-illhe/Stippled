@@ -1,2 +1,0 @@
-# Stippled
-# Stippled

@@ -1,4 +1,0 @@
-Begin
-    Int(x);
-    Copy(x,1+1)
-End

@@ -1,6 +1,6 @@
 (lang dune 3.6)
 (name util)
-(sections (lib .) (libexec .) (doc ../../doc/util))
+(sections (lib .) (libexec .))
 (files
  (lib
   (META
@@ -31,8 +31,7 @@
    util__Position.cmt
    util__Position.cmti
    util__Position.cmx))
- (libexec (util.cmxs))
- (doc (README.md)))
+ (libexec (util.cmxs)))
 (library
  (name util)
  (kind normal)

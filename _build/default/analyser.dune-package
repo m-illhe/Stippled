@@ -1,6 +1,6 @@
 (lang dune 3.6)
 (name analyser)
-(sections (lib .) (libexec .) (doc ../../doc/analyser))
+(sections (lib .) (libexec .))
 (files
  (lib
   (META
@@ -27,8 +27,7 @@
    opam
    simplifier.ml
    type_analyser.ml))
- (libexec (analyser.cmxs))
- (doc (README.md)))
+ (libexec (analyser.cmxs)))
 (library
  (name analyser)
  (kind normal)

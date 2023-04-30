@@ -15,6 +15,3 @@ lib: [
 libexec: [
   "_build/install/default/lib/ast/ast.cmxs"
 ]
-doc: [
-  "_build/install/default/doc/ast/README.md"
-]
