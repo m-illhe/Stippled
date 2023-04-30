@@ -1,6 +1,6 @@
 type token =
-    Y_accessor
-  | X_accessor
+    Y_ACCESSOR
+  | X_ACCESSOR
   | USUB
   | TYPE_POS
   | TYPE_POINT
@@ -9,31 +9,35 @@ type token =
   | TYPE_FLOAT
   | TYPE_COLOR
   | TYPE_BOOL
+  | TO
   | TAIL
   | SUB
   | STRING of string
+  | STEP
   | SIN
   | SEMICOLON
-  | Red_accessor
+  | R_SQ_BRK
   | R_PAR
-  | R_CUR_BRK
-  | Position_accessor
+  | RED_ACCESSOR
+  | PRINT
   | OR
   | NOT
   | NE
   | MUL
   | MOD
+  | L_SQ_BRK
   | L_PAR
-  | L_CUR_BRK
   | LT
   | LE
   | INT of int
+  | IN
   | IF
   | ID of string
   | HEAD
-  | Green_accessor
   | GT
+  | GREEN_ACCESSOR
   | GE
+  | FROM
   | FOREACH
   | FOR
   | FLOOR
@@ -41,16 +45,30 @@ type token =
   | FLOAT of float
   | EQ
   | EOF
+  | END
   | ELSE
+  | DRAW
   | DOT
   | DIV
-  | Color_accessor
   | COS
+  | COPY
+  | CONS
   | COMMA
-  | Blue_accessor
   | BOOL of bool
+  | BLUE_ACCESSOR
+  | BEGIN
   | AND
   | ADD
 val menhir_begin_marker : int
+val xv_unary_operator : Ast.unary_operator
+val xv_type_expr : Ast.type_expr
+val xv_statement_list : Ast.statement list
+val xv_statement : Ast.statement
 val xv_main : Ast.program
+val xv_field_accessor : Ast.field_accessor
+val xv_expression_list : Ast.expression list
+val xv_expression : Ast.expression
+val xv_binary_operator : Ast.binary_operator
+val xv_argument_list : Ast.argument list
+val xv_argument : Ast.argument
 val menhir_end_marker : int

@@ -1,0 +1,6 @@
+<
+Int(x);
+>
+Begin
+    Print(x)
+End

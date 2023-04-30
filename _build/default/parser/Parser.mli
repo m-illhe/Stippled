@@ -2,8 +2,8 @@
 (* The type of tokens. *)
 
 type token = 
-  | Y_accessor
-  | X_accessor
+  | Y_ACCESSOR
+  | X_ACCESSOR
   | USUB
   | TYPE_POS
   | TYPE_POINT
@@ -12,31 +12,35 @@ type token =
   | TYPE_FLOAT
   | TYPE_COLOR
   | TYPE_BOOL
+  | TO
   | TAIL
   | SUB
   | STRING of (string)
+  | STEP
   | SIN
   | SEMICOLON
-  | Red_accessor
+  | R_SQ_BRK
   | R_PAR
-  | R_CUR_BRK
-  | Position_accessor
+  | RED_ACCESSOR
+  | PRINT
   | OR
   | NOT
   | NE
   | MUL
   | MOD
+  | L_SQ_BRK
   | L_PAR
-  | L_CUR_BRK
   | LT
   | LE
   | INT of (int)
+  | IN
   | IF
   | ID of (string)
   | HEAD
-  | Green_accessor
   | GT
+  | GREEN_ACCESSOR
   | GE
+  | FROM
   | FOREACH
   | FOR
   | FLOOR
@@ -44,14 +48,18 @@ type token =
   | FLOAT of (float)
   | EQ
   | EOF
+  | END
   | ELSE
+  | DRAW
   | DOT
   | DIV
-  | Color_accessor
   | COS
+  | COPY
+  | CONS
   | COMMA
-  | Blue_accessor
   | BOOL of (bool)
+  | BLUE_ACCESSOR
+  | BEGIN
   | AND
   | ADD
 
@@ -74,8 +82,8 @@ module MenhirInterpreter : sig
   
   type _ terminal = 
     | T_error : unit terminal
-    | T_Y_accessor : unit terminal
-    | T_X_accessor : unit terminal
+    | T_Y_ACCESSOR : unit terminal
+    | T_X_ACCESSOR : unit terminal
     | T_USUB : unit terminal
     | T_TYPE_POS : unit terminal
     | T_TYPE_POINT : unit terminal
@@ -84,31 +92,35 @@ module MenhirInterpreter : sig
     | T_TYPE_FLOAT : unit terminal
     | T_TYPE_COLOR : unit terminal
     | T_TYPE_BOOL : unit terminal
+    | T_TO : unit terminal
     | T_TAIL : unit terminal
     | T_SUB : unit terminal
     | T_STRING : (string) terminal
+    | T_STEP : unit terminal
     | T_SIN : unit terminal
     | T_SEMICOLON : unit terminal
-    | T_Red_accessor : unit terminal
+    | T_R_SQ_BRK : unit terminal
     | T_R_PAR : unit terminal
-    | T_R_CUR_BRK : unit terminal
-    | T_Position_accessor : unit terminal
+    | T_RED_ACCESSOR : unit terminal
+    | T_PRINT : unit terminal
     | T_OR : unit terminal
     | T_NOT : unit terminal
     | T_NE : unit terminal
     | T_MUL : unit terminal
     | T_MOD : unit terminal
+    | T_L_SQ_BRK : unit terminal
     | T_L_PAR : unit terminal
-    | T_L_CUR_BRK : unit terminal
     | T_LT : unit terminal
     | T_LE : unit terminal
     | T_INT : (int) terminal
+    | T_IN : unit terminal
     | T_IF : unit terminal
     | T_ID : (string) terminal
     | T_HEAD : unit terminal
-    | T_Green_accessor : unit terminal
     | T_GT : unit terminal
+    | T_GREEN_ACCESSOR : unit terminal
     | T_GE : unit terminal
+    | T_FROM : unit terminal
     | T_FOREACH : unit terminal
     | T_FOR : unit terminal
     | T_FLOOR : unit terminal
@@ -116,21 +128,32 @@ module MenhirInterpreter : sig
     | T_FLOAT : (float) terminal
     | T_EQ : unit terminal
     | T_EOF : unit terminal
+    | T_END : unit terminal
     | T_ELSE : unit terminal
+    | T_DRAW : unit terminal
     | T_DOT : unit terminal
     | T_DIV : unit terminal
-    | T_Color_accessor : unit terminal
     | T_COS : unit terminal
+    | T_COPY : unit terminal
+    | T_CONS : unit terminal
     | T_COMMA : unit terminal
-    | T_Blue_accessor : unit terminal
     | T_BOOL : (bool) terminal
+    | T_BLUE_ACCESSOR : unit terminal
+    | T_BEGIN : unit terminal
     | T_AND : unit terminal
     | T_ADD : unit terminal
   
   (* The indexed type of nonterminal symbols. *)
   
   type _ nonterminal = 
+    | N_type_expr : (Ast.type_expr) nonterminal
+    | N_statement_list : (Ast.statement list) nonterminal
+    | N_statement : (Ast.statement) nonterminal
     | N_main : (Ast.program) nonterminal
+    | N_expression_list : (Ast.expression list) nonterminal
+    | N_expression : (Ast.expression) nonterminal
+    | N_argument_list : (Ast.argument list) nonterminal
+    | N_argument : (Ast.argument) nonterminal
   
   (* The inspection API. *)
   
