@@ -13,11 +13,12 @@ open Ast
       - les expressions ne peubent pas faire d’effet de bord ici, ce qui permet de simplifier des expressions pas nécessairement constantes.
       - Les types composés (point, position et couleur) peubent également être simplifiés (e.g., (1,2) + (2,x) peut être simplifié en (3,2+x)).
 
-    bous détaillerez dans le rapport les différents cas que bous simplifiez dans botre simplificateur.
+    bous détaillerez dans le rapport les différents cas que bous simplifiez dans votre simplificateur.
 *)
 
 let rec simplify_expression expr = 
   match expr with 
+  | Pos(exp1, exp2, x) -> Pos(simplify_expression(exp1), simplify_expression(exp2),x)
   | Unary_operator(op,e,anno) -> let e = simplify_expression(e) in (
     match op, e with
     | USub, Constant_i(i, anno2) -> Constant_i(-i,anno2)
@@ -76,7 +77,6 @@ let rec simplify_expression expr =
     | Pos(x1,y1,_), Pos(x2,y2,_) -> (
       match op with 
       | Add | Sub | Mul | Div | Mod -> let x, y = simplify_expression(Binary_operator(op, x1, x2, anno)), simplify_expression(Binary_operator(op, y1, y2, anno)) in Pos(x,y,anno)
-      | Ne -> let x, y = simplify_expression(Binary_operator(Add, x1, x2, anno)), simplify_expression(Binary_operator(Add, y1, y2, anno)) in Pos(x,y,anno)
       | Eq -> let x1, x2, y1, y2 = simplify_expression x1, simplify_expression x2, simplify_expression y1, simplify_expression y2 in (
         match x1, x2, y1, y2 with
         | Constant_i(x1, _), Constant_i(x2, _), Constant_i(y1, _), Constant_i(y2, _) -> Constant_b(((x1 = x2) && (y1 = y2)), anno)

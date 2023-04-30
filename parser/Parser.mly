@@ -54,7 +54,6 @@
 
 %token ADD
 %token SUB
-%token USUB
 %token MUL
 %token DIV
 %token MOD
@@ -73,17 +72,16 @@
 %token <float> FLOAT
 %token <bool> BOOL
 %token <string> ID
-%token <string> STRING
 %token EOF
 
 
-
+%nonassoc IF
 %nonassoc ELSE
-%left AND OR
+%left AND OR CONS
 %left EQ NE LT GT LE GE
 %left ADD SUB 
 %left MUL DIV MOD
-%nonassoc NOT
+%nonassoc NOT DOT
 
 %start <program> main
 %%
@@ -92,6 +90,7 @@ main:
 | LT args = argument_list GT e = statement EOF { Program(List.rev args, e)}
 | e = statement EOF { Program([], e)}
 | EOF{Program([], Block([], Annotation.create $loc))}
+
 
 
 
@@ -105,11 +104,6 @@ type_expr:
 | TYPE_LIST L_PAR t = type_expr R_PAR { Type_list (t) }
 
 
-expression_list:
-| expr = expression { [expr] }
-| expr = expression COMMA t = expression_list  { expr::t }
-| { [] }
-
 expression:
 | i = INT {Constant_i (i,Annotation.create $loc) }
 | f = FLOAT {Constant_f (f,Annotation.create $loc) }
@@ -119,8 +113,9 @@ expression:
 | TYPE_COLOR L_PAR exp1 = expression COMMA exp2 = expression COMMA exp3 = expression R_PAR {Color (exp1,exp2,exp3,Annotation.create $loc) }
 | TYPE_POINT L_PAR exp1 = expression COMMA exp2 = expression R_PAR {Point (exp1,exp2,Annotation.create $loc) }
 | exp1 = expression b=binary_operator exp2 = expression {Binary_operator (b,exp1,exp2,Annotation.create $loc) }
-| u=unary_operator exp1 = expression {Unary_operator (u,exp1,Annotation.create $loc) }
-| exp1 = expression DOT f=field_accessor {Field_accessor (f,exp1,Annotation.create $loc) }
+| u = unary_operator L_PAR exp1 = expression R_PAR {Unary_operator (u,exp1,Annotation.create $loc) }
+| u = not exp1 = expression {Unary_operator (u,exp1,Annotation.create $loc) } %prec NOT
+| exp1 = expression DOT f=field_accessor {Field_accessor (f,exp1,Annotation.create $loc) } 
 | L_SQ_BRK le =expression_list R_SQ_BRK {List (le,Annotation.create $loc) }
 | exp1 = expression CONS exp2 = expression {Cons (exp1,exp2,Annotation.create $loc) }
 | L_PAR e = expression R_PAR { e }
@@ -128,6 +123,16 @@ expression:
 
 statement_list:
 | t = statement_list s = statement { s::t }
+| { [] }
+
+expression_list:
+| expr = expression { [expr] }
+| expr = expression COMMA t = expression_list  { expr::t }
+| { [] }
+
+argument_list:
+| t = argument_list SEMICOLON a = argument { t@[a] }
+| a = argument {a :: []}
 | { [] }
 
 
@@ -157,16 +162,8 @@ statement:
 
 
 
-
-argument_list:
-| p = argument { [p] }
-| t = argument_list COMMA a = argument { a::t }
-| { [] }
-
-
 argument:
-| name = ID te = type_expr {Ast.Argument (name,te,Annotation.create $loc)} 
-
+| te = type_expr  name = ID  {Ast.Argument (name,te,Annotation.create $loc)} 
 
 
 // program:
@@ -188,14 +185,16 @@ argument:
 | GE   { Ge }
 
 %inline unary_operator:
-| USUB   { USub }
-| NOT   { Not }
 | HEAD   { Head }
 | TAIL   { Tail }
 | FLOOR   { Floor }
 | FLOAT_OF_INT   { Float_of_int }
 | COS    { Cos }
 | SIN    { Sin }
+| SUB   { USub }
+
+%inline not:
+| NOT   { Not } 
 
 %inline field_accessor:
 | TYPE_COLOR { Color_accessor }
