@@ -3,17 +3,17 @@ open Ast
 
     Tout comme pour le langage du cours, l’idée consiste à remplacer les termes constants par le résultat de leur calcul.
 
-    Faites une sous-fonctions récursive pour les expressions et les statements.
-    Ces fonction font un pattern matching sur leur argument et traitent chaque cas séparément. Elles renvoient un argument de même type que celui reçu.
+    Faites une sous-fonctions récursibe pour les expressions et les statements.
+    Ces fonction font un pattern matching sur leur argument et traitent chaque cas séparément. Elles renboient un argument de même type que celui reçu.
     Par exemple : simplify_expression : Ast.expression -> Ast.expression
 
     Les cas minimaux attendus sont les cas sur les entiers, les flottants, les booléens, ainsi que les if dont le test est constant, et les for qui ne s’exécutent jamais.
 
-    Deux points qui peuvent vous permettre d’aller plus loin :
-      - les expressions ne peuvent pas faire d’effet de bord ici, ce qui permet de simplifier des expressions pas nécessairement constantes.
-      - Les types composés (point, position et couleur) peuvent également être simplifiés (e.g., (1,2) + (2,x) peut être simplifié en (3,2+x)).
+    Deux points qui peubent bous permettre d’aller plus loin :
+      - les expressions ne peubent pas faire d’effet de bord ici, ce qui permet de simplifier des expressions pas nécessairement constantes.
+      - Les types composés (point, position et couleur) peubent également être simplifiés (e.g., (1,2) + (2,x) peut être simplifié en (3,2+x)).
 
-    Vous détaillerez dans le rapport les différents cas que vous simplifiez dans votre simplificateur.
+    bous détaillerez dans le rapport les différents cas que bous simplifiez dans botre simplificateur.
 *)
 
 let rec simplify_expression expr = 
@@ -61,38 +61,62 @@ let rec simplify_expression expr =
         | Ge -> Constant_b(f1 >= f2, anno)
         | _ -> Binary_operator(op, e1, e2, anno)
     )
-    |Constant_b(b1, _), Constant_b(b2, _) -> (
+    | Constant_b(b, _), Constant_b(v, _) -> (
         match op with
-        | And -> Constant_b(b1 && b2, anno)
-        | Or -> Constant_b(b1 || b2, anno)
-        | Eq -> Constant_b(b1 = b2, anno)
-        | Ne -> Constant_b(b1 != b2, anno)
-        | Lt -> Constant_b(b1 < b2, anno)
-        | Gt -> Constant_b(b1 > b2, anno)
-        | Le -> Constant_b(b1 <= b2, anno)
-        | Ge -> Constant_b(b1 >= b2, anno)
+        | And -> Constant_b(b && v, anno)
+        | Or -> Constant_b(b || v, anno)
+        | Eq -> Constant_b(b = v, anno)
+        | Ne -> Constant_b(b != v, anno)
+        | Lt -> Constant_b(b < v, anno)
+        | Gt -> Constant_b(b > v, anno)
+        | Le -> Constant_b(b <= v, anno)
+        | Ge -> Constant_b(b >= v, anno)
         | _ -> Binary_operator(op, e1, e2, anno)
     )
     | Pos(x1,y1,_), Pos(x2,y2,_) -> (
       match op with 
       | Add | Sub | Mul | Div | Mod -> let x, y = simplify_expression(Binary_operator(op, x1, x2, anno)), simplify_expression(Binary_operator(op, y1, y2, anno)) in Pos(x,y,anno)
       | Ne -> let x, y = simplify_expression(Binary_operator(Add, x1, x2, anno)), simplify_expression(Binary_operator(Add, y1, y2, anno)) in Pos(x,y,anno)
-      | Eq -> let x, y = simplify_expression(Binary_operator(Add, x1, x2, anno)), simplify_expression(Binary_operator(Add, y1, y2, anno)) in  Pos(x,y,anno)
+      | Eq -> let x1, x2, y1, y2 = simplify_expression x1, simplify_expression x2, simplify_expression y1, simplify_expression y2 in (
+        match x1, x2, y1, y2 with
+        | Constant_i(x1, _), Constant_i(x2, _), Constant_i(y1, _), Constant_i(y2, _) -> Constant_b(((x1 = x2) && (y1 = y2)), anno)
+        | _ -> Binary_operator(op, e1, e2, anno) 
+      )
+      | Ne -> let x1, x2, y1, y2 = simplify_expression x1, simplify_expression x2, simplify_expression y1, simplify_expression y2 in (
+          match x1, x2, y1, y2 with
+          | Constant_i(x1, _), Constant_i(x2, _), Constant_i(y1, _), Constant_i(y2, _) -> Constant_b(((x1 != x2) || (y1 != y2)), anno)
+          | _ -> Binary_operator(op, e1, e2, anno)
+        )  
       | _ -> Binary_operator(op, e1, e2, anno)
     )
     | Color(r,g,b,_), Color(h,s,v,_) -> (
       match op with
-      | Add | Sub | Mul | Div | Mod -> let r1,g1,b1 = simplify_expression(Binary_operator(op, r, h, anno)), simplify_expression(Binary_operator(op, g, s, anno)), simplify_expression(Binary_operator(op, b, v, anno)) in Color(r1,g1,b1,anno)
-      | Eq -> let r1, g1, b1 = simplify_expression(Binary_operator(Add, r, h, anno)), simplify_expression(Binary_operator(Add, g, s, anno)), simplify_expression(Binary_operator(Add, b, v, anno)) in Color(r1,g1,b1,anno)
-      | Ne -> let r1, g1, b1 = simplify_expression(Binary_operator(Add, r, h, anno)), simplify_expression(Binary_operator(Add, g, s, anno)), simplify_expression(Binary_operator(Add, b, v, anno)) in Color(r1,g1,b1,anno)
+      | Add | Sub | Mul | Div | Mod -> let r,g,b = simplify_expression(Binary_operator(op, r, h, anno)), simplify_expression(Binary_operator(op, g, s, anno)), simplify_expression(Binary_operator(op, b, v, anno)) in Color(r,g,b,anno)
+      | Eq -> let r, h, g, s, b, v = simplify_expression r, simplify_expression h, simplify_expression g, simplify_expression s, simplify_expression b, simplify_expression v in (
+        match r, g, b, h, s, v with
+        | Constant_i(r, _), Constant_i(g, _), Constant_i(b, _), Constant_i(h, _), Constant_i(s, _), Constant_i(v, _) -> Constant_b(((r = h) && (g = s) && (b = v)), anno)
+        | _ -> Binary_operator(op, e1, e2, anno)
+      )
+      | Ne -> let r, h, g, s, b, v = simplify_expression r, simplify_expression h, simplify_expression g, simplify_expression s, simplify_expression b, simplify_expression v in (
+        match r, g, b, h, s, v with
+        | Constant_i(r, _), Constant_i(g, _), Constant_i(b, _), Constant_i(h, _), Constant_i(s, _), Constant_i(v, _) -> Constant_b(((r != h) || (g != s) || (b != v)), anno)
+        | _ -> Binary_operator(op, e1, e2, anno)
+      )      
       | _ -> Binary_operator(op, e1, e2, anno)
     )
     | Point(p1, c1, _), Point(p2, c2, _) -> (
       match op with
       | Add | Sub | Mul | Div | Mod ->  let pos, col = simplify_expression(Binary_operator(op, p1, p2, anno)), simplify_expression(Binary_operator(op, c1, c2, anno)) in Point(pos, col, anno)
-      | Eq ->  let pos, col = simplify_expression(Binary_operator(Add, p1, p2, anno)), simplify_expression(Binary_operator(Add, c1, c2, anno)) in Point(pos, col, anno)
-      | Ne ->  let pos, col = simplify_expression(Binary_operator(Add, p1, p2, anno)), simplify_expression(Binary_operator(Add, c1, c2, anno)) in Point(pos, col, anno)
-      | _ -> Binary_operator(op, e1, e2, anno)
+      | Eq -> let pos_b, col_b = simplify_expression(Binary_operator(op, p1, p2, anno)), simplify_expression(Binary_operator(op, c1, c2, anno)) in (
+        match pos_b, col_b with
+        | Constant_b(p, _), Constant_b(c, _) -> Constant_b((p && c), anno)
+        | _ -> Binary_operator(op, e1, e2, anno)
+      )
+      | Ne -> let pos_b, col_b = simplify_expression(Binary_operator(op, p1, p2, anno)), simplify_expression(Binary_operator(op, c1, c2, anno)) in (
+        match pos_b, col_b with
+        | Constant_b(p, _), Constant_b(c, _) -> Constant_b(not(p && c), anno)
+        | _ -> Binary_operator(op, e1, e2, anno)
+      )     | _ -> Binary_operator(op, e1, e2, anno)
     )
     | _ -> Binary_operator(op, e1, e2, anno)
   )
