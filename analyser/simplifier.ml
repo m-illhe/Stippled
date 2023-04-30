@@ -13,6 +13,8 @@ open Ast
 
 let rec simplify_expression expr = 
   match expr with 
+  |Field_accessor(f,e,a) -> Field_accessor(f,simplify_expression(e),a)
+  |Point(e1,e2,a) -> Point(simplify_expression(e1),simplify_expression(e2),a)
   | Pos(exp1, exp2, x) -> Pos(simplify_expression(exp1), simplify_expression(exp2),x)
   | Unary_operator(op,e,anno) -> let e = simplify_expression(e) in (
     match op, e with
