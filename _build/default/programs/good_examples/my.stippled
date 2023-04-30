@@ -1,6 +1,4 @@
-<
-Int(x);
->
 Begin
-    Print(x)
+    Int(x);
+    Copy(x,1+1)
 End

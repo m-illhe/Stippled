@@ -2432,7 +2432,7 @@ module Tables = struct
         let _endpos = _endpos__5_ in
         let _v : (Ast.program) = 
 # 92 "parser/Parser.mly"
-                                               ( Program(args, e))
+                                               ( Program(List.rev args, e))
 # 2437 "parser/Parser.ml"
          in
         {
@@ -2944,7 +2944,7 @@ module Tables = struct
           let _loc = (_startpos, _endpos) in
           (
 # 147 "parser/Parser.mly"
-                                    (IfThenElse(e,s1,(Block([], Annotation.create _loc)), Annotation.create _loc))
+                                    (IfThenElse(e,s1,(Nop), Annotation.create _loc))
 # 2949 "parser/Parser.ml"
            : (Ast.statement))
         in

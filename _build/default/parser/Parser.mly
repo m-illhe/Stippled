@@ -85,11 +85,11 @@
 %left MUL DIV MOD
 %nonassoc NOT
 
-%start <Ast.program> main
+%start <program> main
 %%
 
 main:
-| LT args = argument_list GT e = statement EOF { Program(args, e)}
+| LT args = argument_list GT e = statement EOF { Program(List.rev args, e)}
 | e = statement EOF { Program([], e)}
 | EOF{Program([], Block([], Annotation.create $loc))}
 
@@ -144,7 +144,7 @@ statement:
 | BEGIN sl = statement_list END {Block (List.rev sl,Annotation.create $loc) }
 
 | IF e = expression  s1 = statement ELSE s2 = statement  {IfThenElse (e,s1,s2,Annotation.create $loc) }
-| IF e = expression  s1 = statement {IfThenElse(e,s1,(Block([], Annotation.create $loc)), Annotation.create $loc)}
+| IF e = expression  s1 = statement {IfThenElse(e,s1,(Nop), Annotation.create $loc)}
 
 | FOR name = ID FROM e1 = expression TO e2 = expression STEP e3 = expression  s = statement {For (name,e1,e2,e3,s,Annotation.create $loc) }
 | FOREACH name= ID IN e = expression s = statement {Foreach (name,e,s,Annotation.create $loc) }
@@ -169,8 +169,8 @@ argument:
 
 
 
-program:
-| al = argument_list s = statement {Ast.Program ((List.rev al),s)} 
+// program:
+// | al = argument_list s = statement {Ast.Program ((List.rev al),s)} 
 
 %inline binary_operator:
 | ADD   { Add }

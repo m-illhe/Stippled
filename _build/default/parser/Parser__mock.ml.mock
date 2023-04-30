@@ -463,7 +463,7 @@ and (xv_unary_operator, xv_type_expr, xv_statement_list, xv_statement, xv_main, 
    : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) ->
     (
 # 147 "parser/Parser.mly"
-                                    (IfThenElse(e,s1,(Block([], Annotation.create _loc)), Annotation.create _loc))
+                                    (IfThenElse(e,s1,(Nop), Annotation.create _loc))
 # 468 "parser/Parser__mock.ml.mock"
      : 'tv_statement) in
   let _ = fun (_eRR : exn) (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
@@ -663,7 +663,7 @@ and (xv_unary_operator, xv_type_expr, xv_statement_list, xv_statement, xv_main, 
 # 664 "parser/Parser__mock.ml.mock"
      : 'tv_main) : (
 # 88 "parser/Parser.mly"
-       (Ast.program)
+       (program)
 # 668 "parser/Parser__mock.ml.mock"
     )) in
   let _ = fun (_eRR : exn) (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
@@ -681,7 +681,7 @@ and (xv_unary_operator, xv_type_expr, xv_statement_list, xv_statement, xv_main, 
 # 682 "parser/Parser__mock.ml.mock"
      : 'tv_main) : (
 # 88 "parser/Parser.mly"
-       (Ast.program)
+       (program)
 # 686 "parser/Parser__mock.ml.mock"
     )) in
   let _ = fun (_eRR : exn) (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (
@@ -707,11 +707,11 @@ and (xv_unary_operator, xv_type_expr, xv_statement_list, xv_statement, xv_main, 
    : unit) (_startpos__1_ : Lexing.position) (_endpos__1_ : Lexing.position) (_startofs__1_ : int) (_endofs__1_ : int) (_loc__1_ : Lexing.position * Lexing.position) ->
     ((
 # 92 "parser/Parser.mly"
-                                               ( Program(args, e))
+                                               ( Program(List.rev args, e))
 # 712 "parser/Parser__mock.ml.mock"
      : 'tv_main) : (
 # 88 "parser/Parser.mly"
-       (Ast.program)
+       (program)
 # 716 "parser/Parser__mock.ml.mock"
     )) in
   let _ = fun (_eRR : exn) (_startpos : Lexing.position) (_endpos : Lexing.position) (_endpos__0_ : Lexing.position) (_symbolstartpos : Lexing.position) (_startofs : int) (_endofs : int) (_endofs__0_ : int) (_symbolstartofs : int) (_sloc : Lexing.position * Lexing.position) (_loc : Lexing.position * Lexing.position) (

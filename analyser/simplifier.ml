@@ -1,3 +1,4 @@
+open Ast
 (* Codez ici le simplificateur de termes.
 
     Tout comme pour le langage du cours, l’idée consiste à remplacer les termes constants par le résultat de leur calcul.
@@ -15,6 +16,22 @@
     Vous détaillerez dans le rapport les différents cas que vous simplifiez dans votre simplificateur.
 *)
 
-let simplifier program = program
+let rec simplifier program = 
+  match program with 
+  | Program(args,s) -> Program(args,(simplify_instruction s))
 
-  
+
+and simplify_expr expr =
+    match expr with
+    | Binary_operator (op, e1, e2,ano) -> (
+        match (op,  e1,  e2) with
+        | Add, Constant_i (i1,_), Constant_i (i2,n2) -> Constant_i ((i1 + i2),n2)
+        )
+
+and simplify_instruction instruction =
+    match instruction with
+    | Assignment (name, expr,an) -> Assignment (name,(simplify_expr expr),an)
+    | Block (l,an) -> Block ((List.map (fun instr -> simplify_instruction instr) l),an)
+
+
+
