@@ -16,7 +16,7 @@ open Util
 let analyser program text =
   let report = Error_report.create_empty text in
   Type_analyser.type_analyser report program;
-  let program = Simplifier.simplifier program in
+  let program = Simplifier.simplify program in
   Format.printf "@[<v 0>%a@]@," Error_report.pp_errors report;
   let incorrect = not (Error_report.has_errors report) in
   (program, incorrect)

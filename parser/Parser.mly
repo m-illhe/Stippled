@@ -77,7 +77,7 @@
 %token EOF
 
 
-%nonassoc IF
+
 %nonassoc ELSE
 %left AND OR
 %left EQ NE LT GT LE GE
@@ -85,11 +85,11 @@
 %left MUL DIV MOD
 %nonassoc NOT
 
-%start <Ast.program> main
+%start <program> main
 %%
 
 main:
-| LT args = argument_list GT e = statement EOF { Program(args, e)}
+| LT args = argument_list GT e = statement EOF { Program(List.rev args, e)}
 | e = statement EOF { Program([], e)}
 | EOF{Program([], Block([], Annotation.create $loc))}
 
@@ -106,8 +106,8 @@ type_expr:
 
 
 expression_list:
-| expr1 = expression_list COMMA expr2 = expression {expr1 @ [expr2] }
-| expr2 = expression  { expr2::[] }
+| expr = expression { [expr] }
+| expr = expression COMMA t = expression_list  { expr::t }
 | { [] }
 
 expression:
@@ -127,8 +127,7 @@ expression:
 
 
 statement_list:
-| t = statement_list SEMICOLON s = statement { t@[s] }
-| s = statement {s::[]}
+| t = statement_list s = statement { s::t }
 | { [] }
 
 
@@ -145,7 +144,7 @@ statement:
 | BEGIN sl = statement_list END {Block (List.rev sl,Annotation.create $loc) }
 
 | IF e = expression  s1 = statement ELSE s2 = statement  {IfThenElse (e,s1,s2,Annotation.create $loc) }
-| IF e = expression  s1 = statement {IfThenElse(e,s1,(Block([], Annotation.create $loc)), Annotation.create $loc)}
+| IF e = expression  s1 = statement {IfThenElse(e,s1,(Nop), Annotation.create $loc)}
 
 | FOR name = ID FROM e1 = expression TO e2 = expression STEP e3 = expression  s = statement {For (name,e1,e2,e3,s,Annotation.create $loc) }
 | FOREACH name= ID IN e = expression s = statement {Foreach (name,e,s,Annotation.create $loc) }
@@ -160,15 +159,18 @@ statement:
 
 
 argument_list:
-| p = argument_list SEMICOLON t = argument { p@[t] }
-| t = argument {  t :: [] }
+| p = argument { [p] }
+| t = argument_list COMMA a = argument { a::t }
 | { [] }
 
 
 argument:
-| t = type_expr L_PAR name = ID R_PAR{Argument(name, t, Annotation.create $loc)}
-| TYPE_LIST L_PAR t = type_expr R_PAR L_PAR name = ID R_PAR {Argument(name, Type_list(t), Annotation.create $loc)}
+| name = ID te = type_expr {Ast.Argument (name,te,Annotation.create $loc)} 
 
+
+
+// program:
+// | al = argument_list s = statement {Ast.Program ((List.rev al),s)} 
 
 %inline binary_operator:
 | ADD   { Add }

@@ -20,8 +20,8 @@ rule token = parse
     | "Color"           { TYPE_COLOR }
     | "Point"           { TYPE_POINT }
     | "List"            { TYPE_LIST }
-    | "true"            { BOOL(true) }
-    | "false"           { BOOL(false) }
+    | "True"            { BOOL(true) }
+    | "False"           { BOOL(false) }
     | "Float_of_int"    { FLOAT_OF_INT }
     | "And"              { AND }
     | "Or"              { OR }
