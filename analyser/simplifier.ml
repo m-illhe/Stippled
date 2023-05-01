@@ -13,8 +13,10 @@ open Ast
 
 let rec simplify_expression expr = 
   match expr with 
-  |Field_accessor(f,e,a) -> Field_accessor(f,simplify_expression(e),a)
-  |Point(e1,e2,a) -> Point(simplify_expression(e1),simplify_expression(e2),a)
+  | Cons(e1,e2,a) -> Cons(simplify_expression e1,simplify_expression e2,a)
+  | List(el,a) -> List ((List.map (fun e -> simplify_expression e) el),a)
+  | Field_accessor(f,e,a) -> Field_accessor(f,simplify_expression(e),a)
+  | Point(e1,e2,a) -> Point(simplify_expression(e1),simplify_expression(e2),a)
   | Pos(exp1, exp2, x) -> Pos(simplify_expression(exp1), simplify_expression(exp2),x)
   | Unary_operator(op,e,anno) -> let e = simplify_expression(e) in (
     match op, e with
@@ -122,7 +124,7 @@ let rec simplify_expression expr =
 
 let rec statement_simplifier statement = 
   match statement with
-  | Assignment(expr,expr2,anno) -> Assignment(expr, simplify_expression expr2, anno)
+  | Assignment(expr,expr2,anno) -> Assignment(simplify_expression expr, simplify_expression expr2, anno)
   | Block(st_list, anno) -> let l2 = (List.map statement_simplifier st_list) in Block(l2, anno)
   | IfThenElse(test, if_pt, else_pt, anno) -> let t = simplify_expression test in
     let if_pt, else_pt = statement_simplifier if_pt, statement_simplifier else_pt in

@@ -2,7 +2,7 @@
 Begin
     List(Int)(l);
     Int(h);
-    Copy(l, [1, 2, 3]);
+    Copy(l, [1+2+2, 2, 3]);
     Copy(l, []);
     Copy(l, 1::2::3::[]);
     Copy(l, 0:: l);
